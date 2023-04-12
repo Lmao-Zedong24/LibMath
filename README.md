@@ -1,2 +1,0 @@
-# LibMath
-math library
