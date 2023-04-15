@@ -9,17 +9,17 @@ namespace LibMath
 	{
 	public:
 		Degree();
-		explicit Degree(float value);						// explicit so no ambiguous / implicit conversion from float to angle can happen
-		Degree(Degree const& degree);
+		explicit Degree(float);						// explicit so no ambiguous / implicit conversion from float to angle can happen
+		Degree(Degree const&);
 		~Degree();
 
 		operator Radian() const;					// Radian angle = Degree{0.5};		// implicit conversion from Degree to Radian
 
-		Degree& operator=(Degree const& degree);
-		Degree& operator+=(Degree degree);					// Degree angle += Degree{45};
-		Degree& operator-=(Degree degree);					// Degree angle -= Degree{45};
-		Degree& operator*=(float value);					// Degree angle *= 3;
-		Degree& operator/=(float value);					// Degree angle /= 3;
+		Degree& operator=(Degree const&);
+		Degree& operator+=(const Degree&);					// Degree angle += Degree{45};
+		Degree& operator-=(const Degree&);					// Degree angle -= Degree{45};
+		Degree& operator*=(float);					// Degree angle *= 3;
+		Degree& operator/=(float);					// Degree angle /= 3;
 
 		void	wrap(bool = false);					// true -> limit m_value to range [-180, 180[	// false -> limit m_value to range [0, 360[
 
@@ -31,20 +31,20 @@ namespace LibMath
 		float m_value;
 	};
 
-	bool	operator==(Degree Ldegree, Degree Rdegree);				// bool isEqual = Degree{45} == Degree{45};		// true
-	bool	operator==(Degree Ldegree, Radian const& Rradian);		// bool isEqual = Degree{60} == Radian{0.5};	// false
+	bool	operator==(const Degree&, const Degree&);		// bool isEqual = Degree{45} == Degree{45};		// true
+	bool	operator==(const Degree&, Radian const&);		// bool isEqual = Degree{60} == Radian{0.5};	// false
 
-	Degree	operator-(Degree degree);						// Degree angle = - Degree{45};					// Degree{-45}
+	Degree	operator-(const Degree&);						// Degree angle = - Degree{45};					// Degree{-45}
 
-	Degree	operator+(Degree firtDegree, Degree secondDegree);				// Degree angle = Degree{45} + Degree{45};		// Degree{90}
-	Degree	operator-(Degree firtDegree, Degree secondDegree);				// Degree angle = Degree{45} - Degree{45};		// Degree{0}
-	Degree	operator*(Degree degree, float value);				// Degree angle = Degree{45} * 3;				// Degree{135}
-	Degree	operator/(Degree degree, float value);				// Degree angle = Degree{45} / 3;				// Degree{15}
+	Degree	operator+(Degree, const Degree&);				// Degree angle = Degree{45} + Degree{45};		// Degree{90}
+	Degree	operator-(Degree, const Degree&);				// Degree angle = Degree{45} - Degree{45};		// Degree{0}
+	Degree	operator*(Degree, float);				// Degree angle = Degree{45} * 3;				// Degree{135}
+	Degree	operator/(Degree, float);				// Degree angle = Degree{45} / 3;				// Degree{15}
 
 	inline namespace Literal
 	{
-		LibMath::Degree operator""_deg(long double);			// Degree angle = 45_deg;
-		LibMath::Degree operator""_deg(unsigned long long int);	// Degree angle = 7.5_deg;
+		Degree operator""_deg(long double);			// Degree angle = 7.5_deg;
+		Degree operator""_deg(unsigned long long int);	// Degree angle = 45_deg;
 	}
 }
 

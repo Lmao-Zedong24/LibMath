@@ -1,42 +1,43 @@
-#include "../Header/Trigonometry.h"
-
 #include <cmath>
 
-float LibMath::sin(Radian angle)
-{
-	return std::sin(angle.raw());
-}
+#include "Trigonometry.h"
 
-float LibMath::cos(Radian angle)
+namespace LibMath
 {
-	return std::cos(angle.raw());
-}
+	constexpr float g_pi = 3.14159265358979323846264338327950288f;
 
-float LibMath::tan(Radian angle)
-{
-	return std::tan(angle.raw());
-}
+	float sin(const Radian& angle)
+	{
+		return sinf(angle.radian());
+	}
 
-LibMath::Radian LibMath::asin(float value)
-{
-	Radian angle(std::asin(value));
-	return angle;
-}
+	float cos(const Radian& angle)
+	{
+		return cosf(angle.radian());
+	}
 
-LibMath::Radian LibMath::acos(float value)
-{
-	Radian angle(std::asin(value));
-	return angle;
-}
+	float tan(const Radian& angle)
+	{
+		return tanf(angle.radian());
+	}
 
-LibMath::Radian LibMath::atan(float value)
-{
-	Radian angle(std::asin(value));
-	return angle;
-}
+	Radian asin(const float val)
+	{
+		return Radian(asinf(val));
+	}
 
-//LibMath::Radian LibMath::atan(float, float)
-//{
-//	Radian angle(std::atan());
-//	return angle;;
-//}
+	Radian acos(const float val)
+	{
+		return Radian(acosf(val));
+	}
+
+	Radian atan(const float val)
+	{
+		return Radian(atanf(val));
+	}
+
+	Radian atan(const float y, const float x)
+	{
+		return Radian(atan2f(y, x));
+	}
+}

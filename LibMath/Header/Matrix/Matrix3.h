@@ -1,29 +1,44 @@
 #ifndef __LIBMATH__MATRIX__MATRIX3_H__
 #define __LIBMATH__MATRIX__MATRIX3_H__
 
-#include <vector>
-#include "../Vector.h"
+#include "MatrixInternal.h"
 
 namespace LibMath
 {
-	class Matrix3
+	class Matrix3x2 : public Matrix
 	{
 	public:
-							Matrix3() = default;
-							Matrix3(Matrix3 const&);
-							~Matrix3();
-
-		Matrix3&			operator=(Matrix3 const&);
-
-		float&				operator[](int);								// return this vector component value
-		float				operator[](int) const;							// return this vector component value
-
-		Matrix3&			operator+=(Matrix3 const&);
-		Matrix3&			operator*=(Matrix3 const&);
-		//Vector3&			operator*(Vector3);
-
-		float*				m_values = new float[9];
+					Matrix3x2(length_t, length_t) = delete;
+					Matrix3x2(length_t, length_t, float) = delete;
+					Matrix3x2();
+		explicit	Matrix3x2(float scalar);
+					Matrix3x2(const Matrix& other);
+					Matrix3x2(Matrix&& other);
 	};
+
+	class Matrix3x3 : public Matrix
+	{
+	public:
+					Matrix3x3(length_t, length_t) = delete;
+					Matrix3x3(length_t, length_t, float) = delete;
+					Matrix3x3();
+		explicit	Matrix3x3(float scalar);
+					Matrix3x3(const Matrix& other);
+					Matrix3x3(Matrix&& other);
+	};
+
+	class Matrix3x4 : public Matrix
+	{
+	public:
+					Matrix3x4(length_t, length_t) = delete;
+					Matrix3x4(length_t, length_t, float) = delete;
+					Matrix3x4();
+		explicit	Matrix3x4(float scalar);
+					Matrix3x4(const Matrix& other);
+					Matrix3x4(Matrix&& other);
+	};
+
+	typedef Matrix3x3 Matrix3;
 }
 
 #endif // !__LIBMATH__MATRIX__MATRIX3_H__
