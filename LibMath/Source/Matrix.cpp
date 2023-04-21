@@ -286,6 +286,22 @@ namespace LibMath
 		return rotationMat;
 	}
 
+	Matrix4x4 Matrix4x4::perspectiveProjection(const Radian& fovY, const float aspect,
+		const float near, const float far)
+	{
+		const float tanHalfFovY = tan(fovY * .5f);
+
+		Matrix4x4 mat;
+
+		mat[mat.getIndex(0, 0)] = 1.f / (aspect * tanHalfFovY);
+		mat[mat.getIndex(1, 1)] = 1.f / tanHalfFovY;
+		mat[mat.getIndex(2, 2)] = (far + near) / (near - far);
+		mat[mat.getIndex(2, 3)] = (2.f * far * near) / (near - far);
+		mat[mat.getIndex(3, 2)] = -1.f;
+
+		return mat;
+	}
+
 	Matrix::Matrix(const length_t rows, const length_t columns)
 	{
 		if (rows == 0 || columns == 0)

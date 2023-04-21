@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "Vector/Vector3.h"
+#include "Vector3.h"
 
 namespace LibMath
 {
@@ -80,7 +80,7 @@ namespace LibMath
 }
 
 #ifdef __LIBMATH__MATRIX__MATRIX4_H__
-#include "Matrix4Vector4Operation.h"
+#include "../Matrix4Vector4Operation.h"
 #endif // __LIBMATH__MATRIX__MATRIX4_H__
 
 #endif // !__LIBMATH__VECTOR__VECTOR4_H__
