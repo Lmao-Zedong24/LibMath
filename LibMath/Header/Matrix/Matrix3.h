@@ -5,40 +5,18 @@
 
 namespace LibMath
 {
-	class Matrix3x2 : public Matrix
+	class Matrix3 : public SquareMatrix
 	{
 	public:
-					Matrix3x2(length_t, length_t) = delete;
-					Matrix3x2(length_t, length_t, float) = delete;
-					Matrix3x2();
-		explicit	Matrix3x2(float scalar);
-					Matrix3x2(const Matrix& other);
-					Matrix3x2(Matrix&& other);
+					Matrix3(length_t) = delete;
+					Matrix3(length_t, float) = delete;
+					Matrix3();
+		explicit	Matrix3(float scalar);
+					Matrix3(const Matrix3& p_other);
+					Matrix3(Matrix3&& p_other);
 	};
 
-	class Matrix3x3 : public Matrix
-	{
-	public:
-					Matrix3x3(length_t, length_t) = delete;
-					Matrix3x3(length_t, length_t, float) = delete;
-					Matrix3x3();
-		explicit	Matrix3x3(float scalar);
-					Matrix3x3(const Matrix& other);
-					Matrix3x3(Matrix&& other);
-	};
-
-	class Matrix3x4 : public Matrix
-	{
-	public:
-					Matrix3x4(length_t, length_t) = delete;
-					Matrix3x4(length_t, length_t, float) = delete;
-					Matrix3x4();
-		explicit	Matrix3x4(float scalar);
-					Matrix3x4(const Matrix& other);
-					Matrix3x4(Matrix&& other);
-	};
-
-	typedef Matrix3x3 Matrix3;
+	typedef Matrix3 Matrix3x3;
 }
 
 #endif // !__LIBMATH__MATRIX__MATRIX3_H__

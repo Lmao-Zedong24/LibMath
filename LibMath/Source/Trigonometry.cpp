@@ -4,11 +4,11 @@
 
 namespace LibMath
 {
-	constexpr float g_pi = 3.14159265358979323846264338327950288f;
+	constexpr float g_pi = 3.1416f;
 
-	float sin(const Radian& angle)
+	float sin(const Radian& p_angle)
 	{
-		return sinf(angle.radian());
+		return sinf(p_angle.radian());
 	}
 
 	float cos(const Radian& angle)

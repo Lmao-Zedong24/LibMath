@@ -11,189 +11,69 @@ using namespace LibMath::Exceptions;
 
 namespace LibMath
 {
-	Matrix2x2::Matrix2x2() : Matrix(2, 2)
+	Matrix2::Matrix2() : SquareMatrix(2)
 	{
 	}
 
-	Matrix2x2::Matrix2x2(const float scalar) : Matrix(2, 2, scalar)
+	Matrix2::Matrix2(const float scalar) : SquareMatrix(2,scalar)
 	{
 	}
 
-	Matrix2x2::Matrix2x2(const Matrix& other) : Matrix(other)
+	Matrix2::Matrix2(const Matrix2& p_other) : SquareMatrix(p_other)
 	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
+		//if (p_other.getEdgeCount() != 2)
+		//	throw IncompatibleMatrix();
 	}
 
-	Matrix2x2::Matrix2x2(Matrix&& other) : Matrix(other)
+	Matrix2::Matrix2(Matrix2&& p_other) : SquareMatrix(p_other)
 	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
+		//if (p_other.getEdgeCount() != 2)
+		//	throw IncompatibleMatrix();
 	}
 
-	Matrix2x3::Matrix2x3() : Matrix(2, 3)
-	{
-	}
-
-	Matrix2x3::Matrix2x3(const float scalar) : Matrix(2, 3, scalar)
+	Matrix3::Matrix3() : SquareMatrix(3)
 	{
 	}
 
-	Matrix2x3::Matrix2x3(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix2x3::Matrix2x3(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix2x4::Matrix2x4() : Matrix(2, 4)
+	Matrix3::Matrix3(const float scalar) : SquareMatrix(3, scalar)
 	{
 	}
 
-	Matrix2x4::Matrix2x4(const float scalar) : Matrix(2, 4, scalar)
+	Matrix3::Matrix3(const Matrix3& p_other) : SquareMatrix(p_other)
+	{
+		//if (p_other.getEdgeCount() != 3)
+		//	throw IncompatibleMatrix();
+	}
+
+	Matrix3::Matrix3(Matrix3&& p_other) : SquareMatrix(p_other)
+	{
+		//if (p_other.getEdgeCount() != 3)
+		//	throw IncompatibleMatrix();
+	}
+
+	Matrix4::Matrix4() : SquareMatrix(4)
 	{
 	}
 
-	Matrix2x4::Matrix2x4(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix2x4::Matrix2x4(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 2 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix3x2::Matrix3x2() : Matrix(3, 2)
+	Matrix4::Matrix4(const float scalar) : SquareMatrix(4, scalar)
 	{
 	}
 
-	Matrix3x2::Matrix3x2(const float scalar) : Matrix(3, 2, scalar)
+	Matrix4::Matrix4(const SquareMatrix& p_other) : SquareMatrix(p_other)
 	{
+		//if (p_other.getEdgeCount() != 4)
+		//	throw IncompatibleMatrix();
 	}
 
-	Matrix3x2::Matrix3x2(const Matrix& other) : Matrix(other)
+	Matrix4::Matrix4(SquareMatrix&& p_other) : SquareMatrix(p_other)
 	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
+		//if (p_other.getEdgeCount() != 4)
+		//	throw IncompatibleMatrix();
 	}
 
-	Matrix3x2::Matrix3x2(Matrix&& other) : Matrix(other)
+	Matrix4 Matrix4::translation(const float x, const float y, const float z)
 	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix3x3::Matrix3x3() : Matrix(3, 3)
-	{
-	}
-
-	Matrix3x3::Matrix3x3(const float scalar) : Matrix(3, 3, scalar)
-	{
-	}
-
-	Matrix3x3::Matrix3x3(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix3x3::Matrix3x3(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix3x4::Matrix3x4() : Matrix(3, 4)
-	{
-	}
-
-	Matrix3x4::Matrix3x4(const float scalar) : Matrix(3, 4, scalar)
-	{
-	}
-
-	Matrix3x4::Matrix3x4(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix3x4::Matrix3x4(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 3 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x2::Matrix4x2() : Matrix(4, 2)
-	{
-	}
-
-	Matrix4x2::Matrix4x2(const float scalar) : Matrix(4, 2, scalar)
-	{
-	}
-
-	Matrix4x2::Matrix4x2(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x2::Matrix4x2(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 2)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x3::Matrix4x3() : Matrix(4, 3)
-	{
-	}
-
-	Matrix4x3::Matrix4x3(const float scalar) : Matrix(4, 3, scalar)
-	{
-	}
-
-	Matrix4x3::Matrix4x3(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x3::Matrix4x3(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 3)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x4::Matrix4x4() : Matrix(4, 4)
-	{
-	}
-
-	Matrix4x4::Matrix4x4(const float scalar) : Matrix(4, 4, scalar)
-	{
-	}
-
-	Matrix4x4::Matrix4x4(const Matrix& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x4::Matrix4x4(Matrix&& other) : Matrix(other)
-	{
-		if (other.getRowCount() != 4 || other.getColumnCount() != 4)
-			throw IncompatibleMatrix();
-	}
-
-	Matrix4x4 Matrix4x4::translation(const float x, const float y, const float z)
-	{
-		Matrix4x4 translationMatrix(1.f);
+		Matrix4 translationMatrix(1.f);
 
 		translationMatrix[translationMatrix.getIndex(0, 3)] = x;
 		translationMatrix[translationMatrix.getIndex(1, 3)] = y;
@@ -202,9 +82,9 @@ namespace LibMath
 		return translationMatrix;
 	}
 
-	Matrix4x4 Matrix4x4::scaling(const float x, const float y, const float z)
+	Matrix4 Matrix4::scaling(const float x, const float y, const float z)
 	{
-		Matrix4x4 scalingMatrix;
+		Matrix4 scalingMatrix;
 
 		scalingMatrix[scalingMatrix.getIndex(0, 0)] = x;
 		scalingMatrix[scalingMatrix.getIndex(1, 1)] = y;
@@ -214,13 +94,13 @@ namespace LibMath
 		return scalingMatrix;
 	}
 
-	Matrix4x4 Matrix4x4::rotation(const Radian& angle, const Vector3& axis)
+	Matrix4 Matrix4::rotation(const Radian& angle, const Vector3& axis)
 	{
 		const Vector3 dir = axis.normalized();
 		const float cos = LibMath::cos(angle);
 		const float sin = LibMath::sin(angle);
 
-		Matrix4x4 mat;
+		Matrix4 mat;
 
 		mat[mat.getIndex(0, 0)] = cos + dir.m_x * dir.m_x * (1.f - cos);
 		mat[mat.getIndex(0, 1)] = dir.m_x * dir.m_y * (1 - cos) - dir.m_z * sin;
@@ -245,12 +125,12 @@ namespace LibMath
 		return mat;
 	}
 
-	Matrix4x4 Matrix4x4::rotationEuler(const Radian& xAngle, const Radian& yAngle, const Radian& zAngle)
+	Matrix4 Matrix4::rotationEuler(const Radian& xAngle, const Radian& yAngle, const Radian& zAngle)
 	{
 		return rotation(zAngle, xAngle, yAngle);
 	}
 
-	Matrix4x4 Matrix4x4::rotation(const Radian& yaw, const Radian& pitch, const Radian& roll)
+	Matrix4 Matrix4::rotation(const Radian& yaw, const Radian& pitch, const Radian& roll)
 	{
 		const float cosYaw = cos(yaw);
 		const float sinYaw = sin(yaw);
@@ -261,7 +141,7 @@ namespace LibMath
 		const float cosRoll = cos(roll);
 		const float sinRoll = sin(roll);
 
-		Matrix4x4 rotationMat;
+		Matrix4 rotationMat;
 
 		rotationMat[rotationMat.getIndex(0, 0)] = cosYaw * cosRoll + sinYaw * sinPitch * sinRoll;
 		rotationMat[rotationMat.getIndex(0, 1)] = -cosYaw * sinRoll + sinYaw * sinPitch * cosRoll;
@@ -286,12 +166,12 @@ namespace LibMath
 		return rotationMat;
 	}
 
-	Matrix4x4 Matrix4x4::perspectiveProjection(const Radian& fovY, const float aspect,
+	Matrix4 Matrix4::perspectiveProjection(const Radian& fovY, const float aspect,
 		const float near, const float far)
 	{
 		const float tanHalfFovY = tan(fovY * .5f);
 
-		Matrix4x4 mat;
+		Matrix4 mat;
 
 		mat[mat.getIndex(0, 0)] = 1.f / (aspect * tanHalfFovY);
 		mat[mat.getIndex(1, 1)] = 1.f / tanHalfFovY;
@@ -302,16 +182,14 @@ namespace LibMath
 		return mat;
 	}
 
-	Matrix::Matrix(const length_t rows, const length_t columns)
+	SquareMatrix::SquareMatrix(const length_t p_edgeSize)
 	{
-		if (rows == 0 || columns == 0)
+		if (p_edgeSize == 0)
 			throw std::invalid_argument("Invalid matrix size");
 
-		m_rows = rows;
-		m_columns = columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
-
+		m_edge = p_edgeSize;
 		m_values = new float[size]();
 
 		// Builds a matrix filled with zeros
@@ -319,156 +197,145 @@ namespace LibMath
 			m_values[i] = 0;
 	}
 
-	Matrix::Matrix(const length_t rows, const length_t columns, const float scalar)
+	SquareMatrix::SquareMatrix(const length_t p_edgeSize, const float scalar)
 	{
-		if (rows == 0 || columns == 0)
+		if (rows == 0)
 			throw std::invalid_argument("Invalid matrix size");
 
-		m_rows = rows;
-		m_columns = columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
-
+		m_edge = p_edgeSize;
 		m_values = new float[size]();
 
 		// Builds a diagonal matrix with the given scalar
-		for (length_t row = 0; row < m_rows; row++)
-			for (length_t col = 0; col < m_columns; col++)
+		for (length_t row = 0; row < m_edge; row++)
+			for (length_t col = 0; col < m_edge; col++)
 				m_values[getIndex(row, col)] = row == col ? scalar : 0;
 	}
 
-	Matrix::length_t Matrix::getIndex(const length_t row, const length_t column) const
+	SquareMatrix::length_t SquareMatrix::getIndex(const length_t row, const length_t column) const
 	{
-		if (row < 0 || row >= m_rows || column < 0 || column >= m_columns)
+		if (row < 0 || row >= m_edge || column < 0 || column >= m_edge)
 			throw std::out_of_range("Index out of range");
 
-		return row * m_columns + column;
+		return row * m_edge + column;
 	}
 
-	Matrix::~Matrix()
+	SquareMatrix::~SquareMatrix()
 	{
 		delete[] m_values;
 	}
 
-	Matrix::Matrix(const Matrix& other)
+	SquareMatrix::SquareMatrix(const SquareMatrix& p_other)
 	{
-		const size_t size = static_cast<size_t>(other.m_rows) * other.m_columns;
+		m_values = new float[p_other.m_edge]();
 
-		m_values = new float[size]();
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
-			m_values[i] = other[i];
+			m_values[i] = p_other[i];
 
-		m_columns = other.m_columns;
-		m_rows = other.m_rows;
+		m_edge = p_other.m_edge;
 	}
 
-	Matrix::Matrix(Matrix&& other) noexcept
+	SquareMatrix::SquareMatrix(SquareMatrix&& p_other) noexcept
 	{
-		m_columns = other.m_columns;
-		m_rows = other.m_rows;
-		m_values = other.m_values;
+		m_edge = p_other.m_edge;
+		m_values = p_other.m_values;
 
-		other.m_columns = other.m_rows = 0;
-		other.m_values = nullptr;
+		p_other.m_edge = 0;
+		p_other.m_values = nullptr;
 	}
 
-	Matrix& Matrix::operator=(const Matrix& other)
+	SquareMatrix& SquareMatrix::operator=(const SquareMatrix& p_other)
 	{
-		if (this == &other)
+		if (this == &p_other)
 			return *this;
 
 		delete[] m_values;
 
-		const length_t size = other.m_columns * other.m_rows;
-
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 		m_values = new float[size]();
 
 		for (length_t i = 0; i < size; i++)
-			m_values[i] = other[i];
+			m_values[i] = p_other[i];
 
-		m_columns = other.m_columns;
-		m_rows = other.m_rows;
+		m_edge = p_other.m_edge;
 
 		return *this;
 	}
 
-	Matrix& Matrix::operator=(Matrix&& other) noexcept
+	SquareMatrix& SquareMatrix::operator=(SquareMatrix&& p_other) noexcept
 	{
-		if (this == &other)
+		if (this == &p_other)
 			return *this;
 
 		delete[] m_values;
 
-		m_columns = other.m_columns;
-		m_rows = other.m_rows;
-		m_values = other.m_values;
+		m_edge = p_other.m_edge;
+		m_values = p_other.m_values;
 
-		other.m_columns = other.m_rows = 0;
-		other.m_values = nullptr;
+		p_other.m_edge = 0;
+		p_other.m_values = nullptr;
 
 		return *this;
 	}
 
-	float Matrix::operator[](const size_t index) const
+	float SquareMatrix::operator[](const size_t index) const
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
-
-		if (index < 0 || index >= size)
+		if (index < 0 || index >= m_edge * m_edge)
 			throw std::out_of_range("Index out of range");
 
 		return m_values[index];
 	}
 
-	float& Matrix::operator[](const size_t index)
+	float& SquareMatrix::operator[](const size_t index)
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
-
-		if (index < 0 || index >= size)
+		if (index < 0 || index >= m_edge * m_edge)
 			throw std::out_of_range("Index out of range");
 
 		return m_values[index];
 	}
 
-	Matrix& Matrix::operator+=(const Matrix& other)
+	SquareMatrix& SquareMatrix::operator+=(const SquareMatrix& p_other)
 	{
-		if (other.m_columns != m_columns || other.m_rows != m_rows)
+		if (p_other.m_edge != m_edge)
 			throw IncompatibleMatrix();
 
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
-			m_values[i] += other[i];
+			m_values[i] += p_other[i];
 
 		return *this;
 	}
 
-	Matrix& Matrix::operator-=(const Matrix& other)
+	SquareMatrix& SquareMatrix::operator-=(const SquareMatrix& p_other)
 	{
-		if (other.m_columns != m_columns || other.m_rows != m_rows)
+		if (p_other.m_edge != m_edge)
 			throw IncompatibleMatrix();
 
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
-			m_values[i] -= other[i];
+			m_values[i] -= p_other[i];
 
 		return *this;
 	}
 
-	Matrix& Matrix::operator*=(const Matrix& other)
+	SquareMatrix& SquareMatrix::operator*=(const SquareMatrix& p_other)
 	{
-		return (*this = *this * other);
+		return (*this = *this * p_other);
 	}
 
-	Matrix& Matrix::operator/=(const Matrix& other)
+	SquareMatrix& SquareMatrix::operator/=(const SquareMatrix& p_other)
 	{
-		return (*this = *this / other);
+		return (*this = *this / p_other);
 	}
 
-	Matrix& Matrix::operator+=(const float scalar)
+	SquareMatrix& SquareMatrix::operator+=(const float scalar)
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
 			m_values[i] += scalar;
@@ -476,9 +343,9 @@ namespace LibMath
 		return *this;
 	}
 
-	Matrix& Matrix::operator-=(const float scalar)
+	SquareMatrix& SquareMatrix::operator-=(const float scalar)
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
 			m_values[i] -= scalar;
@@ -486,9 +353,9 @@ namespace LibMath
 		return *this;
 	}
 
-	Matrix& Matrix::operator*=(const float scalar)
+	SquareMatrix& SquareMatrix::operator*=(const float scalar)
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
 			m_values[i] *= scalar;
@@ -496,9 +363,9 @@ namespace LibMath
 		return *this;
 	}
 
-	Matrix& Matrix::operator/=(const float scalar)
+	SquareMatrix& SquareMatrix::operator/=(const float scalar)
 	{
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
 			m_values[i] /= scalar;
@@ -506,37 +373,37 @@ namespace LibMath
 		return *this;
 	}
 
-	Matrix Matrix::operator+(const Matrix& other) const
+	SquareMatrix SquareMatrix::operator+(const SquareMatrix& p_other) const
 	{
-		Matrix mat = *this;
-		return mat += other;
+		SquareMatrix mat = *this;
+		return mat += p_other;
 	}
 
-	Matrix Matrix::operator-(const Matrix& other) const
+	SquareMatrix SquareMatrix::operator-(const SquareMatrix& p_other) const
 	{
-		Matrix mat = *this;
-		return mat -= other;
+		SquareMatrix mat = *this;
+		return mat -= p_other;
 	}
 
-	Matrix Matrix::operator*(const Matrix& other) const
+	SquareMatrix SquareMatrix::operator*(const SquareMatrix& p_other) const
 	{
-		if (other.m_rows != m_columns)
+		if (p_other.m_edge != m_edge)
 			throw IncompatibleMatrix();
 
-		Matrix result(m_rows, other.m_columns);
+		SquareMatrix result(m_edge);
 
-		for (length_t otherCol = 0; otherCol < other.m_columns; otherCol++)
+		for (length_t otherCol = 0; otherCol < p_other.m_edge; otherCol++)
 		{
-			for (length_t row = 0; row < m_rows; row++)
+			for (length_t row = 0; row < m_edge; row++)
 			{
 				float scalar = 0;
 
-				for (length_t col = 0; col < m_columns; col++)
+				for (length_t col = 0; col < LIGMA_BALLZ; col++)
 				{
 					const length_t curIndex = getIndex(row, col);
-					const length_t otherIndex = other.getIndex(col, otherCol);
+					const length_t otherIndex = p_other.getIndex(col, otherCol);
 
-					scalar += m_values[curIndex] * other[otherIndex];
+					scalar += m_values[curIndex] * p_other[otherIndex];
 				}
 
 				const length_t resultIndex = result.getIndex(row, otherCol);
@@ -547,104 +414,99 @@ namespace LibMath
 		return result;
 	}
 
-	Matrix Matrix::operator/(const Matrix& other) const
+	SquareMatrix SquareMatrix::operator/(const SquareMatrix& p_other) const
 	{
-		return *this * other.inverse();
+		return *this * p_other.inverse();
 	}
 
-	Matrix Matrix::operator+(const float scalar) const
+	SquareMatrix SquareMatrix::operator+(const float scalar) const
 	{
-		Matrix mat = *this;
+		SquareMatrix mat = *this;
 		return mat += scalar;
 	}
 
-	Matrix Matrix::operator-(const float scalar) const
+	SquareMatrix SquareMatrix::operator-(const float scalar) const
 	{
-		Matrix mat = *this;
+		SquareMatrix mat = *this;
 		return mat -= scalar;
 	}
 
-	Matrix Matrix::operator*(const float scalar) const
+	SquareMatrix SquareMatrix::operator*(const float scalar) const
 	{
-		Matrix mat = *this;
+		SquareMatrix mat = *this;
 		return mat *= scalar;
 	}
 
-	Matrix Matrix::operator/(const float scalar) const
+	SquareMatrix SquareMatrix::operator/(const float scalar) const
 	{
-		Matrix mat = *this;
+		SquareMatrix mat = *this;
 		return mat /= scalar;
 	}
 
-	Matrix Matrix::operator-() const
+	SquareMatrix SquareMatrix::operator-() const
 	{
 		return *this * -1;
 	}
 
-	bool Matrix::operator==(const Matrix& other) const
+	bool SquareMatrix::operator==(const SquareMatrix& p_other) const
 	{
-		if (other.m_rows != m_rows || other.m_columns != m_columns)
+		if (p_other.m_edge != m_edge)
 			return false;
 
-		const size_t size = static_cast<size_t>(m_rows) * m_columns;
+		const size_t size = static_cast<size_t>(m_edge) * m_edge;
 
 		for (size_t i = 0; i < size; i++)
-			if (!floatEquals(m_values[i], other[i]))
+			if (!floatEquals(m_values[i], p_other[i]))
 				return false;
 
 		return true;
 	}
 
-	bool Matrix::operator!=(const Matrix& other) const
+	bool SquareMatrix::operator!=(const SquareMatrix& p_other) const
 	{
-		return !(*this == other);
+		return !(*this == p_other);
 	}
 
-	bool Matrix::isIdentity() const
+	bool SquareMatrix::isIdentity() const
 	{
-		if (m_rows != m_columns)
+		if (m_edge != m_edge)
 			return false;
 
-		return *this == Matrix(m_rows, m_columns, 1.f);
+		return *this == SquareMatrix(m_edge, 1.f);
 	}
 
-	Matrix::length_t Matrix::getRowCount() const
+	SquareMatrix::length_t SquareMatrix::getEdgeCount() const
 	{
-		return m_rows;
+		return m_edge;
 	}
 
-	Matrix::length_t Matrix::getColumnCount() const
+	float SquareMatrix::cofactor(const length_t p_edge) const
 	{
-		return m_columns;
-	}
-
-	float Matrix::cofactor(const length_t row, const length_t column) const
-	{
-		if (m_rows != m_columns)
+		if (m_edge != m_edge)
 			throw NonSquareMatrix();
 
-		if (m_rows == 1)
+		if (m_edge == 1)
 			return m_values[0];
 
 		// The multiplier is (-1)^(i+j) so 1 when i + j is pair and -1 otherwise
-		const float multiplier = (row + column) % 2 == 0 ? 1.f : -1.f;
+		const float multiplier = (p_edge) % 2 == 0 ? 1.f : -1.f;
 
-		return multiplier * minor(row, column).determinant();
+		return multiplier * minor(p_edge).determinant();
 	}
 
-	Matrix Matrix::minor(const length_t row, const length_t column) const
+	SquareMatrix SquareMatrix::minor(const p_edge row) const
 	{
-		Matrix minor(m_rows - 1, m_columns - 1);
+		SquareMatrix minor(m_edge - 1);
 		length_t minorLine = 0;
 
-		for (length_t i = 0; i < m_rows; i++)
+		for (length_t i = 0; i < m_edge; i++)
 		{
 			if (i == row)
 				continue;
 
 			length_t minorCol = 0;
 
-			for (length_t j = 0; j < m_columns; j++)
+			for (length_t j = 0; j < m_edge; j++)
 			{
 				if (j == column)
 					continue;
@@ -658,14 +520,14 @@ namespace LibMath
 		return minor;
 	}
 
-	float Matrix::determinant2x2() const
+	float SquareMatrix::determinant2x2() const
 	{
 		// 0 1
 		// 2 3
 		return (*this)[0] * (*this)[3] - (*this)[1] * (*this)[2];
 	}
 
-	float Matrix::determinant3x3() const
+	float SquareMatrix::determinant3x3() const
 	{
 		// 0 1 2
 		// 3 4 5
@@ -681,71 +543,71 @@ namespace LibMath
 		return positive - negative;
 	}
 
-	float Matrix::determinant() const
+	float SquareMatrix::determinant() const
 	{
-		if (m_rows != m_columns)
-			throw NonSquareMatrix();
+		//if (m_edge != m_edge)
+		//	throw NonSquareMatrix();
 
-		if (m_rows == 1)
+		if (m_edge == 1)
 			return m_values[0];
 
-		if (m_rows == 2)
+		if (m_edge == 2)
 			return determinant2x2();
 
-		if (m_rows == 3)
+		if (m_edge == 3)
 			return determinant3x3();
 
 		float determinant = 0;
 
-		for (length_t col = 0; col < m_columns; col++)
+		for (length_t col = 0; col < m_edge; col++)
 			determinant += m_values[col] * cofactor(0, col);
 
 		return determinant;
 	}
 
-	Matrix Matrix::transposed() const
+	SquareMatrix SquareMatrix::transposed() const
 	{
-		if (m_rows != m_columns)
-			throw NonSquareMatrix();
+		//if (m_edge != m_edge)
+		//	throw NonSquareMatrix();
 
-		Matrix transposed(m_columns, m_rows);
+		SquareMatrix transposed(m_edge);
 
-		for (length_t i = 0; i < m_rows; i++)
-			for (length_t j = 0; j < m_columns; j++)
+		for (length_t i = 0; i < m_edge; i++)
+			for (length_t j = 0; j < m_edge; j++)
 				transposed[transposed.getIndex(j, i)] = m_values[getIndex(i, j)];
 
 		return transposed;
 	}
 
-	Matrix Matrix::coMatrix() const
+	SquareMatrix SquareMatrix::coMatrix() const
 	{
-		if (m_rows != m_columns)
-			throw NonSquareMatrix();
+		//if (m_edge != m_edge)
+		//	throw NonSquareMatrix();
 
-		Matrix coMatrix(m_rows, m_columns);
+		SquareMatrix coMatrix(m_edge);
 
-		for (length_t row = 0; row < m_rows; row++)
-			for (length_t col = 0; col < m_columns; col++)
+		for (length_t row = 0; row < m_edge; row++)
+			for (length_t col = 0; col < m_edge; col++)
 				coMatrix[getIndex(row, col)] = cofactor(row, col);
 
 		return coMatrix;
 	}
 
-	Matrix Matrix::adjugate() const
+	SquareMatrix SquareMatrix::adjugate() const
 	{
-		return coMatrix().transposed();
+		return this.coMatrix().transposed();
 	}
 
-	Matrix Matrix::inverse() const
+	SquareMatrix SquareMatrix::inverse() const
 	{
-		if (m_rows != m_columns)
-			throw NonSquareMatrix();
+		//if (m_edge != m_edge)
+		//	throw NonSquareMatrix();
 
-		const float det = determinant();
+		const float det = this.determinant();
 
 		if (det == 0.f)
 			throw NonInvertibleMatrix();
 
-		return adjugate() / det;
+		return this.adjugate() / det;
 	}
 }

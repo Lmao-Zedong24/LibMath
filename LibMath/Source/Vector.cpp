@@ -9,7 +9,7 @@
 
 namespace LibMath
 {
-	Vector2::Vector2(const float value) : Vector2(value, value)
+	Vector2::Vector2(const float p_value) : Vector2(p_value, p_value)
 	{
 	}
 
@@ -52,139 +52,139 @@ namespace LibMath
 		return { m_x, m_y, 0 };
 	}
 
-	float& Vector2::operator[](const int index)
+	float& Vector2::operator[](const int p_index)
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
 		case 1:
 			return this->m_y;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Invalid index \"" + std::to_string(p_index) + "\" received");
 		}
 	}
 
-	float Vector2::operator[](const int index) const
+	float Vector2::operator[](const int p_index) const
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
 		case 1:
 			return this->m_y;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Invalid index \"" + std::to_string(p_index) + "\" received");
 		}
 	}
 
-	Vector2& Vector2::operator+=(Vector2 const& other)
+	Vector2& Vector2::operator+=(Vector2 const& p_other)
 	{
-		this->m_x += other.m_x;
-		this->m_y += other.m_y;
+		this->m_x += p_other.m_x;
+		this->m_y += p_other.m_y;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator-=(Vector2 const& other)
+	Vector2& Vector2::operator-=(Vector2 const& p_other)
 	{
-		this->m_x -= other.m_x;
-		this->m_y -= other.m_y;
+		this->m_x -= p_other.m_x;
+		this->m_y -= p_other.m_y;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator*=(Vector2 const& other)
+	Vector2& Vector2::operator*=(Vector2 const& p_other)
 	{
-		this->m_x *= other.m_x;
-		this->m_y *= other.m_y;
+		this->m_x *= p_other.m_x;
+		this->m_y *= p_other.m_y;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator/=(Vector2 const& other)
+	Vector2& Vector2::operator/=(Vector2 const& p_other)
 	{
-		this->m_x /= other.m_x;
-		this->m_y /= other.m_y;
+		this->m_x /= p_other.m_x;
+		this->m_y /= p_other.m_y;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator+=(float const& value)
+	Vector2& Vector2::operator+=(float const& p_value)
 	{
-		this->m_x += value;
-		this->m_y += value;
+		this->m_x += p_value;
+		this->m_y += p_value;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator-=(float const& value)
+	Vector2& Vector2::operator-=(float const& p_value)
 	{
-		this->m_x -= value;
-		this->m_y -= value;
+		this->m_x -= p_value;
+		this->m_y -= p_value;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator*=(float const& value)
+	Vector2& Vector2::operator*=(float const& p_value)
 	{
-		this->m_x *= value;
-		this->m_y *= value;
+		this->m_x *= p_value;
+		this->m_y *= p_value;
 
 		return *this;
 	}
 
-	Vector2& Vector2::operator/=(float const& value)
+	Vector2& Vector2::operator/=(float const& p_value)
 	{
-		this->m_x /= value;
-		this->m_y /= value;
+		this->m_x /= p_value;
+		this->m_y /= p_value;
 
 		return *this;
 	}
 
-	Radian Vector2::angleFrom(Vector2 const& other) const
+	Radian Vector2::angleFrom(Vector2 const& p_other) const
 	{
-		return acos(this->dot(other) / squareRoot(this->magnitudeSquared() * other.magnitudeSquared()));
+		return acos(this->dot(p_other) / squareRoot(this->magnitudeSquared() * p_other.magnitudeSquared()));
 	}
 
-	Radian Vector2::signedAngleFrom(Vector2 const& other) const
+	Radian Vector2::signedAngleFrom(Vector2 const& p_other) const
 	{
-		const Radian angle = angleFrom(other);
-		const float sign = other.cross(*this) >= 0 ? 1.f : -1.f;
+		const Radian angle = angleFrom(p_other);
+		const float sign = p_other.cross(*this) >= 0 ? 1.f : -1.f;
 		return angle * sign;
 	}
 
-	float Vector2::cross(Vector2 const& other) const
+	float Vector2::cross(Vector2 const& p_other) const
 	{
-		return this->m_x * other.m_y - this->m_y * other.m_x;
+		return this->m_x * p_other.m_y - this->m_y * p_other.m_x;
 	}
 
-	float Vector2::distanceFrom(Vector2 const& other) const
+	float Vector2::distanceFrom(Vector2 const& p_other) const
 	{
-		return squareRoot(this->distanceSquaredFrom(other));
+		return squareRoot(this->distanceSquaredFrom(p_other));
 	}
 
-	float Vector2::distanceSquaredFrom(Vector2 const& other) const
+	float Vector2::distanceSquaredFrom(Vector2 const& p_other) const
 	{
-		const float xDist = other.m_x - this->m_x;
-		const float yDist = other.m_y - this->m_y;
+		const float xDist = p_other.m_x - this->m_x;
+		const float yDist = p_other.m_y - this->m_y;
 
 		return xDist * xDist + yDist * yDist;
 	}
 
-	float Vector2::dot(Vector2 const& other) const
+	float Vector2::dot(Vector2 const& p_other) const
 	{
-		return this->m_x * other.m_x + this->m_y * other.m_y;
+		return this->m_x * p_other.m_x + this->m_y * p_other.m_y;
 	}
 
-	bool Vector2::isLongerThan(Vector2 const& other) const
+	bool Vector2::isLongerThan(Vector2 const& p_other) const
 	{
-		return this->magnitudeSquared() > other.magnitudeSquared();
+		return this->magnitudeSquared() > p_other.magnitudeSquared();
 	}
 
-	bool Vector2::isShorterThan(Vector2 const& other) const
+	bool Vector2::isShorterThan(Vector2 const& p_other) const
 	{
-		return this->magnitudeSquared() < other.magnitudeSquared();
+		return this->magnitudeSquared() < p_other.magnitudeSquared();
 	}
 
 	bool Vector2::isUnitVector() const
@@ -219,10 +219,9 @@ namespace LibMath
 		*this = this->dot(normal) / normal.magnitudeSquared() * normal;
 	}
 
-	// Adapted from https://math.stackexchange.com/a/4325839
-	void Vector2::reflectOnto(Vector2 const& other)
+	void Vector2::reflectOnto(Vector2 const& p_other)
 	{
-		*this -= 2 * this->dot(other) / other.magnitudeSquared() * other;
+		*this -= 2 * this->dot(p_other) / p_other.magnitudeSquared() * p_other;
 	}
 
 	void Vector2::rotate(const Radian& angle)
@@ -231,9 +230,9 @@ namespace LibMath
 		m_y = m_x * sin(angle) + m_y * cos(angle);
 	}
 
-	void Vector2::scale(Vector2 const& other)
+	void Vector2::scale(Vector2 const& p_other)
 	{
-		*this *= other;
+		*this *= p_other;
 	}
 
 	std::string Vector2::string() const
@@ -368,7 +367,7 @@ namespace LibMath
 		return stream;
 	}
 
-	Vector3::Vector3(const float value) : Vector3(value, value, value)
+	Vector3::Vector3(const float p_value) : Vector3(p_value, p_value, p_value)
 	{
 	}
 
@@ -416,9 +415,9 @@ namespace LibMath
 		return {0.f, 0.f, -1.f};
 	}
 
-	float& Vector3::operator[](const int index)
+	float& Vector3::operator[](const int p_index)
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
@@ -427,13 +426,13 @@ namespace LibMath
 		case 2:
 			return this->m_z;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Index out of range : " + std::to_string(p_index));
 		}
 	}
 
-	float Vector3::operator[](const int index) const
+	float Vector3::operator[](const int p_index) const
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
@@ -442,144 +441,144 @@ namespace LibMath
 		case 2:
 			return this->m_z;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Index out of range : " + std::to_string(p_index));
 		}
 	}
 
-	Vector3& Vector3::operator+=(Vector3 const& other)
+	Vector3& Vector3::operator+=(Vector3 const& p_other)
 	{
-		this->m_x += other.m_x;
-		this->m_y += other.m_y;
-		this->m_z += other.m_z;
+		this->m_x += p_other.m_x;
+		this->m_y += p_other.m_y;
+		this->m_z += p_other.m_z;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator-=(Vector3 const& other)
+	Vector3& Vector3::operator-=(Vector3 const& p_other)
 	{
-		this->m_x -= other.m_x;
-		this->m_y -= other.m_y;
-		this->m_z -= other.m_z;
+		this->m_x -= p_other.m_x;
+		this->m_y -= p_other.m_y;
+		this->m_z -= p_other.m_z;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator*=(Vector3 const& other)
+	Vector3& Vector3::operator*=(Vector3 const& p_other)
 	{
-		this->m_x *= other.m_x;
-		this->m_y *= other.m_y;
-		this->m_z *= other.m_z;
+		this->m_x *= p_other.m_x;
+		this->m_y *= p_other.m_y;
+		this->m_z *= p_other.m_z;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator/=(Vector3 const& other)
+	Vector3& Vector3::operator/=(Vector3 const& p_other)
 	{
-		this->m_x /= other.m_x;
-		this->m_y /= other.m_y;
-		this->m_z /= other.m_z;
+		this->m_x /= p_other.m_x;
+		this->m_y /= p_other.m_y;
+		this->m_z /= p_other.m_z;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator+=(float const& value)
+	Vector3& Vector3::operator+=(float const& p_value)
 	{
-		this->m_x += value;
-		this->m_y += value;
-		this->m_z += value;
+		this->m_x += p_value;
+		this->m_y += p_value;
+		this->m_z += p_value;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator-=(float const& value)
+	Vector3& Vector3::operator-=(float const& p_value)
 	{
-		this->m_x -= value;
-		this->m_y -= value;
-		this->m_z -= value;
+		this->m_x -= p_value;
+		this->m_y -= p_value;
+		this->m_z -= p_value;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator*=(float const& value)
+	Vector3& Vector3::operator*=(float const& p_value)
 	{
-		this->m_x *= value;
-		this->m_y *= value;
-		this->m_z *= value;
+		this->m_x *= p_value;
+		this->m_y *= p_value;
+		this->m_z *= p_value;
 
 		return *this;
 	}
 
-	Vector3& Vector3::operator/=(float const& value)
+	Vector3& Vector3::operator/=(float const& p_value)
 	{
-		this->m_x /= value;
-		this->m_y /= value;
-		this->m_z /= value;
+		this->m_x /= p_value;
+		this->m_y /= p_value;
+		this->m_z /= p_value;
 
 		return *this;
 	}
 
-	Radian Vector3::angleFrom(Vector3 const& other) const
+	Radian Vector3::angleFrom(Vector3 const& p_other) const
 	{
-		return acos(this->dot(other) / squareRoot(this->magnitudeSquared() * other.magnitudeSquared()));
+		return acos(this->dot(p_other) / squareRoot(this->magnitudeSquared() * p_other.magnitudeSquared()));
 	}
 
-	Radian Vector3::signedAngleFrom(Vector3 const& other, Vector3 const& axis) const
+	Radian Vector3::signedAngleFrom(Vector3 const& p_other, Vector3 const& axis) const
 	{
-		const Radian angle = angleFrom(other);
-		const Vector3 cross = other.cross(*this);
+		const Radian angle = angleFrom(p_other);
+		const Vector3 cross = p_other.cross(*this);
 		const float sign = axis.m_x * cross.m_x + axis.m_y * cross.m_y + axis.m_z * cross.m_z >= 0 ? 1.f : -1.f;
 		return angle * sign;
 	}
 
-	Vector3 Vector3::cross(Vector3 const& other) const
+	Vector3 Vector3::cross(Vector3 const& p_other) const
 	{
 		return {
-			this->m_y * other.m_z - this->m_z * other.m_y,
-			this->m_z * other.m_x - this->m_x * other.m_z,
-			this->m_x * other.m_y - this->m_y * other.m_x
+			this->m_y * p_other.m_z - this->m_z * p_other.m_y,
+			this->m_z * p_other.m_x - this->m_x * p_other.m_z,
+			this->m_x * p_other.m_y - this->m_y * p_other.m_x
 		};
 	}
 
-	float Vector3::distanceFrom(Vector3 const& other) const
+	float Vector3::distanceFrom(Vector3 const& p_other) const
 	{
-		return squareRoot(this->distanceSquaredFrom(other));
+		return squareRoot(this->distanceSquaredFrom(p_other));
 	}
 
-	float Vector3::distanceSquaredFrom(Vector3 const& other) const
+	float Vector3::distanceSquaredFrom(Vector3 const& p_other) const
 	{
-		const float xDist = other.m_x - this->m_x;
-		const float yDist = other.m_y - this->m_y;
-		const float zDist = other.m_z - this->m_z;
+		const float xDist = p_other.m_x - this->m_x;
+		const float yDist = p_other.m_y - this->m_y;
+		const float zDist = p_other.m_z - this->m_z;
 
 		return xDist * xDist + yDist * yDist + zDist * zDist;
 	}
 
-	float Vector3::distance2DFrom(Vector3 const& other) const
+	float Vector3::distance2DFrom(Vector3 const& p_other) const
 	{
-		return squareRoot(this->distance2DSquaredFrom(other));
+		return squareRoot(this->distance2DSquaredFrom(p_other));
 	}
 
-	float Vector3::distance2DSquaredFrom(Vector3 const& other) const
+	float Vector3::distance2DSquaredFrom(Vector3 const& p_other) const
 	{
-		const float xDist = other.m_x - this->m_x;
-		const float yDist = other.m_y - this->m_y;
+		const float xDist = p_other.m_x - this->m_x;
+		const float yDist = p_other.m_y - this->m_y;
 
 		return xDist * xDist + yDist * yDist;
 	}
 
-	float Vector3::dot(Vector3 const& other) const
+	float Vector3::dot(Vector3 const& p_other) const
 	{
-		return this->m_x * other.m_x + this->m_y * other.m_y + this->m_z * other.m_z;
+		return this->m_x * p_other.m_x + this->m_y * p_other.m_y + this->m_z * p_other.m_z;
 	}
 
-	bool Vector3::isLongerThan(Vector3 const& other) const
+	bool Vector3::isLongerThan(Vector3 const& p_other) const
 	{
-		return this->magnitudeSquared() > other.magnitudeSquared();
+		return this->magnitudeSquared() > p_other.magnitudeSquared();
 	}
 
-	bool Vector3::isShorterThan(Vector3 const& other) const
+	bool Vector3::isShorterThan(Vector3 const& p_other) const
 	{
-		return this->magnitudeSquared() < other.magnitudeSquared();
+		return this->magnitudeSquared() < p_other.magnitudeSquared();
 	}
 
 	bool Vector3::isUnitVector() const
@@ -615,9 +614,9 @@ namespace LibMath
 	}
 
 	// Adapted from https://math.stackexchange.com/a/4325839
-	void Vector3::reflectOnto(Vector3 const& other)
+	void Vector3::reflectOnto(Vector3 const& p_other)
 	{
-		*this -= 2 * this->dot(other) / other.magnitudeSquared() * other;
+		*this -= 2 * this->dot(p_other) / p_other.magnitudeSquared() * p_other;
 	}
 
 	void Vector3::rotate(const Radian& xAngle, const Radian& yAngle, const Radian& zAngle)
@@ -640,9 +639,9 @@ namespace LibMath
 		m_z = vec4.m_z;
 	}
 
-	void Vector3::scale(Vector3 const& other)
+	void Vector3::scale(Vector3 const& p_other)
 	{
-		*this *= other;
+		*this *= p_other;
 	}
 
 	std::string Vector3::string() const
@@ -771,8 +770,8 @@ namespace LibMath
 		return stream;
 	}
 
-	Vector4::Vector4(const float value) :
-		Vector4(value, value, value, value)
+	Vector4::Vector4(const float p_value) :
+		Vector4(p_value, p_value, p_value, p_value)
 	{
 	}
 
@@ -821,9 +820,9 @@ namespace LibMath
 		return { 0.f, 0.f, -1.f, 0.f };
 	}
 
-	float& Vector4::operator[](const int index)
+	float& Vector4::operator[](const int p_index)
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
@@ -834,13 +833,13 @@ namespace LibMath
 		case 3:
 			return this->m_w;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Invalid index \"" + std::to_string(p_index) + "\" received");
 		}
 	}
 
-	float Vector4::operator[](const int index) const
+	float Vector4::operator[](const int p_index) const
 	{
-		switch (index)
+		switch (p_index)
 		{
 		case 0:
 			return this->m_x;
@@ -851,96 +850,96 @@ namespace LibMath
 		case 3:
 			return this->m_w;
 		default:
-			throw std::out_of_range("Invalid index \"" + std::to_string(index) + "\" received");
+			throw std::out_of_range("Invalid index \"" + std::to_string(p_index) + "\" received");
 		}
 	}
 
-	Vector4& Vector4::operator+=(Vector4 const& other)
+	Vector4& Vector4::operator+=(Vector4 const& p_other)
 	{
-		m_x += other.m_x;
-		m_y += other.m_y;
-		m_z += other.m_z;
-		m_w += other.m_w;
+		m_x += p_other.m_x;
+		m_y += p_other.m_y;
+		m_z += p_other.m_z;
+		m_w += p_other.m_w;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator-=(Vector4 const& other)
+	Vector4& Vector4::operator-=(Vector4 const& p_other)
 	{
-		m_x -= other.m_x;
-		m_y -= other.m_y;
-		m_z -= other.m_z;
-		m_w -= other.m_w;
+		m_x -= p_other.m_x;
+		m_y -= p_other.m_y;
+		m_z -= p_other.m_z;
+		m_w -= p_other.m_w;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator*=(Vector4 const& other)
+	Vector4& Vector4::operator*=(Vector4 const& p_other)
 	{
-		m_x *= other.m_x;
-		m_y *= other.m_y;
-		m_z *= other.m_z;
-		m_w *= other.m_w;
+		m_x *= p_other.m_x;
+		m_y *= p_other.m_y;
+		m_z *= p_other.m_z;
+		m_w *= p_other.m_w;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator/=(Vector4 const& other)
+	Vector4& Vector4::operator/=(Vector4 const& p_other)
 	{
-		m_x /= other.m_x;
-		m_y /= other.m_y;
-		m_z /= other.m_z;
-		m_w /= other.m_w;
+		m_x /= p_other.m_x;
+		m_y /= p_other.m_y;
+		m_z /= p_other.m_z;
+		m_w /= p_other.m_w;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator+=(float const& value)
+	Vector4& Vector4::operator+=(float const& p_value)
 	{
-		m_x += value;
-		m_y += value;
-		m_z += value;
-		m_w += value;
+		m_x += p_value;
+		m_y += p_value;
+		m_z += p_value;
+		m_w += p_value;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator-=(float const& value)
+	Vector4& Vector4::operator-=(float const& p_value)
 	{
-		m_x -= value;
-		m_y -= value;
-		m_z -= value;
-		m_w -= value;
+		m_x -= p_value;
+		m_y -= p_value;
+		m_z -= p_value;
+		m_w -= p_value;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator*=(float const& value)
+	Vector4& Vector4::operator*=(float const& p_value)
 	{
-		m_x *= value;
-		m_y *= value;
-		m_z *= value;
-		m_w *= value;
+		m_x *= p_value;
+		m_y *= p_value;
+		m_z *= p_value;
+		m_w *= p_value;
 
 		return *this;
 	}
 
-	Vector4& Vector4::operator/=(float const& value)
+	Vector4& Vector4::operator/=(float const& p_value)
 	{
-		m_x /= value;
-		m_y /= value;
-		m_z /= value;
-		m_w /= value;
+		m_x /= p_value;
+		m_y /= p_value;
+		m_z /= p_value;
+		m_w /= p_value;
 
 		return *this;
 	}
 
-	float Vector4::dot(Vector4 const& other) const
+	float Vector4::dot(Vector4 const& p_other) const
 	{
-		return this->m_x * other.m_x +
-			this->m_y * other.m_y +
-			this->m_z * other.m_z +
-			this->m_w * other.m_w;
+		return this->m_x * p_other.m_x +
+			this->m_y * p_other.m_y +
+			this->m_z * p_other.m_z +
+			this->m_w * p_other.m_w;
 	}
 
 	float Vector4::magnitudeSquared() const
@@ -1009,19 +1008,19 @@ namespace LibMath
 		return left *= right;
 	}
 
-	Vector4 operator/(Vector4 vector, Vector4 const& value)
+	Vector4 operator/(Vector4 vector, Vector4 const& p_value)
 	{
-		return vector /= value;
+		return vector /= p_value;
 	}
 
-	Vector4 operator+(Vector4 vector, float const& value)
+	Vector4 operator+(Vector4 vector, float const& p_value)
 	{
-		return vector += value;
+		return vector += p_value;
 	}
 
-	Vector4 operator-(Vector4 vector, float const& value)
+	Vector4 operator-(Vector4 vector, float const& p_value)
 	{
-		return vector -= value;
+		return vector -= p_value;
 	}
 
 	Vector4 operator*(Vector4 vector, float const& scalar)

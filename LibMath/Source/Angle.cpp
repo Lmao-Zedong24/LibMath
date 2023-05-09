@@ -13,7 +13,7 @@ namespace LibMath
 	{
 	}
 
-	Radian::Radian(Radian const& other) : Radian(other.m_value)
+	Radian::Radian(Radian const& p_other) : Radian(p_other.m_value)
 	{
 	}
 
@@ -24,12 +24,12 @@ namespace LibMath
 		return Degree(m_value * 180 / g_pi);
 	}
 
-	Radian& Radian::operator=(Radian const& other)
+	Radian& Radian::operator=(Radian const& p_other)
 	{
-		if (this == &other)
+		if (this == &p_other)
 			return *this;
 
-		this->m_value = other.m_value;
+		this->m_value = p_other.m_value;
 
 		return *this;
 	}
@@ -144,7 +144,7 @@ namespace LibMath
 	{
 	}
 
-	Degree::Degree(Degree const& other) : Degree(other.m_value)
+	Degree::Degree(Degree const& p_other) : Degree(p_other.m_value)
 	{
 	}
 
@@ -155,12 +155,12 @@ namespace LibMath
 		return Radian(m_value * g_pi / 180);
 	}
 
-	Degree& Degree::operator=(Degree const& other)
+	Degree& Degree::operator=(Degree const& p_other)
 	{
-		if (this == &other)
+		if (this == &p_other)
 			return *this;
 
-		this->m_value = other.m_value;
+		this->m_value = p_other.m_value;
 
 		return *this;
 	}

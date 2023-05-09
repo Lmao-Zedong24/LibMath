@@ -34,68 +34,65 @@ namespace LibMath
 		};
 	}
 
-	class Matrix
+	class SquareMatrix
 	{
-	public:
+	protected:
 		using			length_t = int;
 
-						Matrix(length_t rows, length_t columns);
-						Matrix(length_t rows, length_t columns, float scalar);
-						Matrix(Matrix const& other);
-						Matrix(Matrix&& other) noexcept;
-		virtual			~Matrix();
+						SquareMatrix(length_t p_size);
+						SquareMatrix(length_t rows, length_t columns, float scalar);
+						SquareMatrix(SquareMatrix const& p_other);
+						SquareMatrix(SquareMatrix&& p_other) noexcept;
+		virtual			~SquareMatrix();
 
-		Matrix&			operator=(Matrix const& other);
-		Matrix&			operator=(Matrix&& other) noexcept;
+		SquareMatrix&			operator=(SquareMatrix const& p_other);
+		SquareMatrix&			operator=(SquareMatrix&& p_other) noexcept;
 
 		float			operator[](size_t index) const;
 		float&			operator[](size_t index);
 
-		Matrix&			operator+=(Matrix const& other);
-		Matrix&			operator-=(Matrix const& other);
-		Matrix&			operator*=(Matrix const& other);
-		Matrix&			operator/=(Matrix const& other);
+		SquareMatrix&			operator+=(SquareMatrix const& p_other);
+		SquareMatrix&			operator-=(SquareMatrix const& p_other);
+		SquareMatrix&			operator*=(SquareMatrix const& p_other);
+		SquareMatrix&			operator/=(SquareMatrix const& p_other);
 
-		Matrix&			operator+=(float scalar);
-		Matrix&			operator-=(float scalar);
-		Matrix&			operator*=(float scalar);
-		Matrix&			operator/=(float scalar);
+		SquareMatrix&			operator+=(float scalar);
+		SquareMatrix&			operator-=(float scalar);
+		SquareMatrix&			operator*=(float scalar);
+		SquareMatrix&			operator/=(float scalar);
 
-		Matrix			operator+(Matrix const& other) const;
-		Matrix			operator-(Matrix const& other) const;
-		Matrix			operator*(Matrix const& other) const;
-		Matrix			operator/(Matrix const& other) const;
+		SquareMatrix			operator+(SquareMatrix const& p_other) const;
+		SquareMatrix			operator-(SquareMatrix const& p_other) const;
+		SquareMatrix			operator*(SquareMatrix const& p_other) const;
+		SquareMatrix			operator/(SquareMatrix const& p_other) const;
 
-		Matrix			operator+(float scalar) const;
-		Matrix			operator-(float scalar) const;
-		Matrix			operator*(float scalar) const;
-		Matrix			operator/(float scalar) const;
+		SquareMatrix			operator+(float scalar) const;
+		SquareMatrix			operator-(float scalar) const;
+		SquareMatrix			operator*(float scalar) const;
+		SquareMatrix			operator/(float scalar) const;
 
-		Matrix			operator-() const;
+		SquareMatrix			operator-() const;
 
-		bool			operator==(const Matrix& other) const;
-		bool			operator!=(const Matrix& other) const;
+		bool			operator==(const SquareMatrix& p_other) const;
+		bool			operator!=(const SquareMatrix& p_other) const;
 		bool			isIdentity() const;
 
-		length_t		getRowCount() const;
-		length_t		getColumnCount() const;
+		length_t		getEdgeCount() const;
 		length_t		getIndex(length_t row, length_t column) const;
 
 		float			determinant() const;
 		float			cofactor(length_t row, length_t column) const;
 
-		Matrix			minor(length_t row, length_t column) const;
-		Matrix			transposed() const;
-		Matrix			coMatrix() const;
-		Matrix			adjugate() const;
-		Matrix			inverse() const;
+		SquareMatrix			minor(length_t row, length_t column) const;
+		SquareMatrix			transposed() const;
+		SquareMatrix			coMatrix() const;
+		SquareMatrix			adjugate() const;
+		SquareMatrix			inverse() const;
 
-	protected:
 		float			determinant2x2() const;
 		float			determinant3x3() const;
 
-		length_t		m_rows;
-		length_t		m_columns;
+		length_t		m_edge;
 		float*			m_values;
 	};
 }
